@@ -199,3 +199,23 @@
   .footer-logo img{width:178px}
   .footer-socials .social-icon-link span{font-size:8px}
 }
+
+
+/* Shared-stage / collaborators gallery */
+.collabs-section{background:#101010;color:var(--paper);padding:94px 0 108px;border-top:1px solid #282421;border-bottom:1px solid #282421}
+.collabs-section .section-index{border-color:#37312c;color:#aaa49b}
+.collabs-section .section-title-row{padding:48px 0 36px;align-items:flex-end}
+.collabs-section .section-title-row>p{max-width:340px;font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:#c4bbb0}
+.collabs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 20px}
+.collab-card{position:relative;display:flex;flex-direction:column;align-items:stretch;text-align:left;padding:0;border:0;background:#191817;color:var(--paper);cursor:pointer;overflow:hidden;min-width:0}
+.collab-card img{display:block;width:100%;aspect-ratio:1.18/1;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s;filter:saturate(.88)}
+.collab-card:hover img,.collab-card:focus-visible img{transform:scale(1.035);filter:saturate(1.08)}
+.collab-overlay{position:absolute;inset:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:13px 14px;background:linear-gradient(#0009,transparent);font:10px var(--mono);letter-spacing:.7px;opacity:0;transition:opacity .25s}
+.collab-card:hover .collab-overlay,.collab-card:focus-visible .collab-overlay{opacity:1}
+.collab-overlay b{color:var(--yellow);font-weight:500}
+.collab-caption{display:block;padding:17px 17px 19px;font-size:13px;line-height:1.55;color:#bdb4aa;min-height:76px}
+.collab-caption strong{display:block;font-size:19px;line-height:1.2;color:var(--paper);font-weight:700;margin-top:3px;letter-spacing:-.4px}
+.collab-card:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+@media(max-width:900px){.collabs-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}.collabs-section{padding:78px 0 88px}}
+@media(max-width:650px){.collabs-section{padding:68px 0 74px}.collabs-section .section-title-row{display:block;padding:32px 0 25px}.collabs-section .section-title-row>p{margin-top:18px;font-size:13px}.collabs-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 10px}.collab-card img{aspect-ratio:.88/1}.collab-caption{padding:12px 10px 14px;font-size:11px;min-height:75px}.collab-caption strong{font-size:15px}.collab-overlay{opacity:1;padding:8px;font-size:8px}}
+@media(prefers-reduced-motion:reduce){.collab-card img{transition:none}}

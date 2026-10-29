@@ -79,7 +79,8 @@ if (finePointer && !reducedMotion) {
 }
 
 // Gallery filtering and lightbox
-const galleryCards = [...document.querySelectorAll(".gallery-card")];
+const galleryCards = [...document.querySelectorAll("#gallery-grid .gallery-card")];
+const lightboxCards = [...document.querySelectorAll("#gallery-grid .gallery-card, #collabs-grid .collab-card")];
 const filters = document.querySelectorAll(".filter-button");
 filters.forEach(button => button.addEventListener("click", () => {
   filters.forEach(filter => filter.classList.toggle("active", filter === button));
@@ -96,7 +97,7 @@ const closeLightbox = lightbox.querySelector(".lightbox-close");
 let activeGalleryCards = [];
 let activeGalleryIndex = 0;
 function openLightbox(card) {
-  activeGalleryCards = galleryCards.filter(item => !item.hidden);
+  activeGalleryCards = lightboxCards.filter(item => !item.hidden);
   activeGalleryIndex = activeGalleryCards.indexOf(card);
   showLightboxImage();
   lightbox.classList.add("open");
@@ -116,7 +117,7 @@ function hideLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
-galleryCards.forEach(card => card.addEventListener("click", () => openLightbox(card)));
+lightboxCards.forEach(card => card.addEventListener("click", () => openLightbox(card)));
 closeLightbox.addEventListener("click", hideLightbox);
 lightbox.querySelector(".lightbox-prev").addEventListener("click", () => {
   activeGalleryIndex = (activeGalleryIndex - 1 + activeGalleryCards.length) % activeGalleryCards.length;
