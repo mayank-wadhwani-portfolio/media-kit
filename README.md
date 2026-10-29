@@ -48,3 +48,21 @@ Open `index.html` in a browser. For a more accurate local preview, use VS Code's
 - The Google Fonts stylesheet needs an internet connection; fallback fonts are included.
 - The fire cursor is automatically disabled on touch devices and when reduced motion is enabled.
 - Review all text and media against the official media kit before publishing.
+
+## Add photos yourself (Shared the Stage admin)
+
+The site now reads the collaborator gallery from `collabs.json`. To add a new photo without editing HTML:
+
+1. Deploy the updated website folder to your GitHub repository and wait for Cloudflare Pages to finish deploying.
+2. Open `https://YOUR-SITE-URL/admin.html` on your own computer.
+3. Create a GitHub **fine-grained personal access token** at GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens. Limit it to only this website repository and grant **Contents: Read and write**. Do not paste the token into chat or commit it to any file.
+4. In the admin page, enter the repository as `OWNER/REPOSITORY`, the production branch (usually `main`), and the token.
+5. Choose a JPG, PNG, or WebP image under 8 MB, enter a caption and optional accessibility description, then click **Upload & publish to gallery**.
+6. The page uploads the image to `assets/images/collabs/`, appends the new item to `collabs.json`, and commits both to GitHub. Cloudflare Pages should redeploy automatically.
+
+### Security notes
+
+- `admin.html` is not linked in the public navigation, but its URL is not secret. The admin page does not store the token; it uses the token in memory only while the page is open.
+- Use this on your own trusted device. Create a token limited to this one repository, revoke it when no longer needed, and never use a broad classic token.
+- Anyone who obtains the token while it is in use could make repository changes. For a higher-security workflow, put the admin route behind an authentication/access layer or use a dedicated authenticated backend.
+- If the photo upload succeeds but updating `collabs.json` fails, check the repository before retrying so you do not create duplicate image files.

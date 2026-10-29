@@ -80,7 +80,7 @@ if (finePointer && !reducedMotion) {
 
 // Gallery filtering and lightbox
 const galleryCards = [...document.querySelectorAll("#gallery-grid .gallery-card")];
-const lightboxCards = [...document.querySelectorAll("#gallery-grid .gallery-card, #collabs-grid .collab-card")];
+function getLightboxCards() { return [...document.querySelectorAll("#gallery-grid .gallery-card, #collabs-grid .collab-card")]; }
 const filters = document.querySelectorAll(".filter-button");
 filters.forEach(button => button.addEventListener("click", () => {
   filters.forEach(filter => filter.classList.toggle("active", filter === button));
@@ -97,7 +97,7 @@ const closeLightbox = lightbox.querySelector(".lightbox-close");
 let activeGalleryCards = [];
 let activeGalleryIndex = 0;
 function openLightbox(card) {
-  activeGalleryCards = lightboxCards.filter(item => !item.hidden);
+  activeGalleryCards = getLightboxCards().filter(item => !item.hidden);
   activeGalleryIndex = activeGalleryCards.indexOf(card);
   showLightboxImage();
   lightbox.classList.add("open");
@@ -117,7 +117,7 @@ function hideLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
-lightboxCards.forEach(card => card.addEventListener("click", () => openLightbox(card)));
+document.addEventListener("click", event => { const card = event.target.closest("#gallery-grid .gallery-card, #collabs-grid .collab-card"); if (card) openLightbox(card); });
 closeLightbox.addEventListener("click", hideLightbox);
 lightbox.querySelector(".lightbox-prev").addEventListener("click", () => {
   activeGalleryIndex = (activeGalleryIndex - 1 + activeGalleryCards.length) % activeGalleryCards.length;
@@ -134,6 +134,45 @@ document.addEventListener("keydown", event => {
   if (event.key === "ArrowLeft") lightbox.querySelector(".lightbox-prev").click();
   if (event.key === "ArrowRight") lightbox.querySelector(".lightbox-next").click();
 });
+
+
+// Shared the Stage gallery is driven by collabs.json, so new photos added through /admin.html appear after deployment.
+async function loadCollabsGallery() {
+  const grid = document.getElementById("collabs-grid");
+  if (!grid) return;
+  try {
+    const response = await fetch("collabs.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("Gallery data could not be loaded");
+    const items = await response.json();
+    grid.replaceChildren();
+    items.forEach((item, index) => {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "collab-card reveal is-visible";
+      card.dataset.image = item.image;
+      card.dataset.caption = item.caption || "Shared the stage";
+      const img = document.createElement("img");
+      img.src = item.image;
+      img.alt = item.alt || item.caption || "Mayank Wadhwani at an event";
+      img.loading = "lazy";
+      const overlay = document.createElement("span");
+      overlay.className = "collab-overlay";
+      const number = document.createElement("b");
+      number.textContent = String(index + 1).padStart(2, "0");
+      const action = document.createElement("span");
+      action.textContent = "VIEW PHOTO ↗";
+      overlay.append(number, action);
+      const caption = document.createElement("span");
+      caption.className = "collab-caption";
+      caption.textContent = item.caption || "Shared the stage";
+      card.append(img, overlay, caption);
+      grid.append(card);
+    });
+  } catch (error) {
+    grid.innerHTML = '<p class="collabs-loading">The gallery could not load right now. Please refresh in a moment.</p>';
+  }
+}
+loadCollabsGallery();
 
 // Booking cards preselect the event type in the contact form.
 document.querySelectorAll(".booking-card").forEach(card => card.addEventListener("click", () => {

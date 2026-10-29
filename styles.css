@@ -219,3 +219,6 @@
 @media(max-width:900px){.collabs-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}.collabs-section{padding:78px 0 88px}}
 @media(max-width:650px){.collabs-section{padding:68px 0 74px}.collabs-section .section-title-row{display:block;padding:32px 0 25px}.collabs-section .section-title-row>p{margin-top:18px;font-size:13px}.collabs-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 10px}.collab-card img{aspect-ratio:.88/1}.collab-caption{padding:12px 10px 14px;font-size:11px;min-height:75px}.collab-caption strong{font-size:15px}.collab-overlay{opacity:1;padding:8px;font-size:8px}}
 @media(prefers-reduced-motion:reduce){.collab-card img{transition:none}}
+
+/* Shared the Stage: data-driven gallery helper text */
+.collabs-loading{grid-column:1/-1;color:#b9b0a5;font-size:16px;line-height:1.7;padding:24px 0}
