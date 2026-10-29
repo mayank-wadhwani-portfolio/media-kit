@@ -171,3 +171,8 @@
   .footer-top p{font-size:13px}
   .footer-bottom{font-size:10px}
 }
+
+/* Mr. Hahakaar identity + social links */
+.wordmark-logo{display:block;width:142px;height:auto;max-height:48px;object-fit:contain;object-position:left center}.header-socials{display:flex;align-items:center;gap:14px}.header-socials a,.footer-socials a{font:500 10px var(--mono);letter-spacing:.7px;color:#d7d0c5;transition:color .2s}.header-socials a:hover,.footer-socials a:hover{color:var(--orange)}.footer-logo{display:flex;align-items:center}.footer-logo img{display:block;width:178px;height:auto}.footer-socials{display:flex;align-items:center;gap:18px}.booking-aside{max-width:330px;line-height:1.7}
+@media(max-width:900px){.wordmark-logo{width:125px}.header-socials{gap:9px}.header-socials a{font-size:9px}.footer-socials{flex-wrap:wrap}}
+@media(max-width:650px){.wordmark-logo{width:116px;max-height:40px}.header-socials{display:none}.footer-logo img{width:150px}.footer-socials{width:100%;justify-content:space-between;gap:10px}.footer-socials a{font-size:8px}.hero-photo>img{object-position:50% center}}

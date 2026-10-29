@@ -26,9 +26,9 @@ The gallery currently uses clearly labelled SVG placeholders; they are not real 
 
 ## Contact details already configured
 - Business email: `business.mayankwadhwani@gmail.com`
-- WhatsApp: `+91 89499 45003`
+- WhatsApp manager contact: `+91 80790 28032`
 - The contact form prepares a message in WhatsApp. The visitor must press Send in WhatsApp to submit it.
-- Update the number in `script.js` (`WHATSAPP_NUMBER`) and the direct WhatsApp URL in `index.html` if the number changes.
+- Manager WhatsApp is configured as `+91 80790 28032` in `script.js` and `index.html`. Instagram and YouTube links are included in the header/footer.
 
 ## Test locally
 Open `index.html` in a browser. For a more accurate local preview, use VS Code's Live Server extension.

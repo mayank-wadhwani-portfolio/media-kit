@@ -1,6 +1,6 @@
 // Mayank Wadhwani website interactions.
 // Replace placeholder gallery images and video paths with real media before publishing.
-const WHATSAPP_NUMBER = "918949945003";
+const WHATSAPP_NUMBER = "918079028032";
 const BUSINESS_EMAIL = "business.mayankwadhwani@gmail.com";
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -147,7 +147,7 @@ bookingForm.addEventListener("submit", event => {
   if (!bookingForm.reportValidity()) return;
   const data = new FormData(bookingForm);
   const lines = [
-    "Hi Mayank! I'd like to enquire about booking you for an event.",
+    "Hi! I'd like to connect with Mayank's manager regarding an event.",
     "",
     `Name: ${data.get("name")}`,
     `Event / Organisation: ${data.get("event")}`,
@@ -158,7 +158,7 @@ bookingForm.addEventListener("submit", event => {
     `Additional details: ${data.get("details") || "Not specified"}`
   ];
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
-  document.getElementById("form-status").textContent = "Opening WhatsApp with your enquiry. Review the message and press send there.";
+  document.getElementById("form-status").textContent = "Opening WhatsApp with your enquiry to Mayank’s manager. Review the message and press send there.";
   window.open(url, "_blank", "noopener,noreferrer");
 });
 
