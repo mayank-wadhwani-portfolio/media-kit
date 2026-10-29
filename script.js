@@ -147,7 +147,7 @@ bookingForm.addEventListener("submit", event => {
   if (!bookingForm.reportValidity()) return;
   const data = new FormData(bookingForm);
   const lines = [
-    "Hi! I'd like to connect with Mayank's manager regarding an event.",
+    "Hey! Mayank ko stage pe laane ka plan hai 😎 Event details discuss kar sakte hain?",
     "",
     `Name: ${data.get("name")}`,
     `Event / Organisation: ${data.get("event")}`,

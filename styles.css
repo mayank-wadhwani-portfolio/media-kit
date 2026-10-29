@@ -176,3 +176,26 @@
 .wordmark-logo{display:block;width:142px;height:auto;max-height:48px;object-fit:contain;object-position:left center}.header-socials{display:flex;align-items:center;gap:14px}.header-socials a,.footer-socials a{font:500 10px var(--mono);letter-spacing:.7px;color:#d7d0c5;transition:color .2s}.header-socials a:hover,.footer-socials a:hover{color:var(--orange)}.footer-logo{display:flex;align-items:center}.footer-logo img{display:block;width:178px;height:auto}.footer-socials{display:flex;align-items:center;gap:18px}.booking-aside{max-width:330px;line-height:1.7}
 @media(max-width:900px){.wordmark-logo{width:125px}.header-socials{gap:9px}.header-socials a{font-size:9px}.footer-socials{flex-wrap:wrap}}
 @media(max-width:650px){.wordmark-logo{width:116px;max-height:40px}.header-socials{display:none}.footer-logo img{width:150px}.footer-socials{width:100%;justify-content:space-between;gap:10px}.footer-socials a{font-size:8px}.hero-photo>img{object-position:50% center}}
+
+/* Final brand touch-ups: equal-size Mr. Hahakaar wordmark and social icons */
+.wordmark{gap:0;flex:0 0 auto}
+.wordmark-logo{width:220px;height:auto;max-height:none;object-fit:contain}
+.wordmark-text{display:none}
+.header-socials a{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,248,237,.2);border-radius:50%;color:#f7efe4}
+.header-socials a svg{width:17px;height:17px;display:block}
+.header-socials a:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.footer-logo img{width:220px;height:auto}
+.footer-socials .social-icon-link{display:inline-flex;align-items:center;gap:8px}
+.footer-socials .social-icon-link svg{display:block;width:18px;height:18px}
+@media(max-width:900px){.wordmark-logo{width:190px}.footer-logo img{width:190px}}
+@media(max-width:650px){
+  .wordmark-logo{width:166px;max-height:none}
+  .site-header{gap:10px}
+  .header-socials{display:flex;gap:7px;margin-left:auto;margin-right:44px}
+  .header-socials a{width:29px;height:29px}
+  .header-socials a svg{width:15px;height:15px}
+  .header-cta{display:none}
+  .menu-toggle{right:16px}
+  .footer-logo img{width:178px}
+  .footer-socials .social-icon-link span{font-size:8px}
+}
